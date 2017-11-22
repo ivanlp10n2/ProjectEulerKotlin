@@ -2,9 +2,16 @@ package excercise_1
 
 fun main(args: Array<String>) {
 
-    for (i in 0..10){
-        i += 2
-        println(i)
+    var sum : Int = 0
+
+    for (i in 0..999){
+        if ((i % 3 == 0) || (i % 5 == 0))
+        {
+            println(i)
+            sum += i
+        }
     }
+
+    println(sum)
 
 }
