@@ -4,19 +4,38 @@ package excercise_3
 fun main(args: Array<String>) {
 
 
-    var primeNumbersList : Set<Int> = setOf(1,2)
+    var primeNumbersList : MutableList<Int> = mutableListOf(2)
+    var auxPrimeNumberList : List<Int> = listOf()
+    val number  = 10
 
-    val number = 10
+    val root = Math.sqrt(number.toDouble())
+    println(root)
 
-    var elem: Int
-    var iterator = primeNumbersList.iterator()
-
-    for( i in 1..number)
+    while (root > primeNumbersList.last())
     {
-        while (iterator.hasNext()){
-            elem = 
-        }
+        if ( )
     }
+
+    for( i in 3..number) {
+        if(root > primeNumbersList.last()){
+            println(primeNumbersList.last())
+            for (item: Int in primeNumbersList) {
+                if (i % item != 0){
+                    println(i)
+//                    if( i % primeNumbersList.last() != 0)
+//                        primeNumbersList.add(i)
+                }else break
+            }
+
+        }
+
+    }
+
+
+
+
+    println("La lista contiene $primeNumbersList")
+
 }
 
 fun isPrime (x:Int, primeArray: MutableList<Int>) : Boolean
