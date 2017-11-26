@@ -3,49 +3,51 @@ package excercise_3
 
 fun main(args: Array<String>) {
 
+    var primeNumbersList : MutableList<Long> = mutableListOf(2)
+    val number  = 600851475143L
 
-    var primeNumbersList : MutableList<Int> = mutableListOf(2)
-    var auxPrimeNumberList : List<Int> = listOf()
-    val number  = 10
 
-    val root = Math.sqrt(number.toDouble())
-    println(root)
+    var thereIsNoPrimeNumber = true
+    var divisor = 2L
+    var remainder : Long
 
-    while (root > primeNumbersList.last())
+    var factor : Long = 0
+
+    while (thereIsNoPrimeNumber)
     {
-        if ( )
-    }
+        remainder = number.rem(divisor)
+        if(remainder == 0L){
+            factor= number/divisor
+            println("Factor actual = $factor")
+            if(primeNumbersList.size <= 1)
+            //Completa los primos < sqrt(number) en la lista
+                primeNumbersList = populatePrimes(factor, primeNumbersList)
 
-    for( i in 3..number) {
-        if(root > primeNumbersList.last()){
-            println(primeNumbersList.last())
-            for (item: Int in primeNumbersList) {
-                if (i % item != 0){
-                    println(i)
-//                    if( i % primeNumbersList.last() != 0)
-//                        primeNumbersList.add(i)
-                }else break
-            }
-
+            thereIsNoPrimeNumber = !isPrime(factor, primeNumbersList)
         }
-
+        divisor++
     }
 
-
-
-
-    println("La lista contiene $primeNumbersList")
+    println("Bien papu, lo lograste. Sos crack!!! \n El número es ${number / divisor}")
 
 }
 
-fun isPrime (x:Int, primeArray: MutableList<Int>) : Boolean
+fun populatePrimes(number : Long, primeArray: MutableList<Long>) : MutableList<Long>{
+    val root = Math.ceil(Math.sqrt(number.toDouble()))
+    for (n : Long in 3L..root.toInt())
+        if(isPrime(n, primeArray))
+            primeArray.add(n)
+    return primeArray
+}
+
+fun isPrime (x:Long, primeArray: MutableList<Long>) : Boolean
 {
-    val iterateList = primeArray.iterator()
-    while(iterateList.hasNext())
-    {
-        println(iterateList.next())
-        if(iterateList.next() % x == 0) return true
+    val iterateList : Iterator<Long> = primeArray.iterator()
+    while(iterateList.hasNext()) {
+        val nextElem = iterateList.next()
+        if(x.rem(nextElem) == 0L && Math.ceil(Math.sqrt(x.toDouble())) > nextElem)
+            return false
     }
-    primeArray.add(x)
-    return false
+    println(x)
+    return true
 }
