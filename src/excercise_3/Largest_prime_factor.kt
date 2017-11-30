@@ -6,7 +6,6 @@ fun main(args: Array<String>) {
     var primeNumbersList : MutableList<Long> = mutableListOf(2)
     val number  = 600851475143L
 
-
     var thereIsNoPrimeNumber = true
     var divisor = 2L
     var remainder : Long
@@ -32,7 +31,7 @@ fun main(args: Array<String>) {
 
 }
 
-fun populatePrimes(number : Long, primeArray: MutableList<Long>) : MutableList<Long>{
+fun populatePrimes(number : Long, primeArray: MutableList<Long>) : MutableList<Long> {
     val root = Math.ceil(Math.sqrt(number.toDouble()))
     for (n : Long in 3L..root.toInt())
         if(isPrime(n, primeArray))
@@ -40,14 +39,12 @@ fun populatePrimes(number : Long, primeArray: MutableList<Long>) : MutableList<L
     return primeArray
 }
 
-fun isPrime (x:Long, primeArray: MutableList<Long>) : Boolean
-{
+fun isPrime (x:Long, primeArray: MutableList<Long>) : Boolean {
     val iterateList : Iterator<Long> = primeArray.iterator()
     while(iterateList.hasNext()) {
         val nextElem = iterateList.next()
         if(x.rem(nextElem) == 0L && Math.ceil(Math.sqrt(x.toDouble())) > nextElem)
             return false
     }
-    println(x)
     return true
 }

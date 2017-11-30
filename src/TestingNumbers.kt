@@ -1,4 +1,11 @@
 fun main(args: Array<String>) {
-    val next = 4L
-    print(next.rem(2))
+
+    val max_mult = 9
+    var iteracion = 0
+    for (n in max_mult downTo 1){
+        for (i in max_mult downTo max_mult - iteracion)
+            println("$n * $i")
+       iteracion++
+    }
+
 }
